@@ -1,40 +1,18 @@
-const { ApolloServer, gql } = require('apollo-server');
+// const { ApolloServer, gql } = require('apollo-server');
+
+// const conectarDB = require('./config/db');
+// const typeDefs = require('./schema');
+// const resolvers = require('./resolvers'); 
+
+import { ApolloServer } from 'apollo-server';
+
+import conectarDB from './config/db.js';
+import resolvers from './resolvers.js';
+import typeDefs from './schema.js';
 
 
-const curso = [
-    {
-        titulo: 'Soy titulo #1',
-        tecnologia: 'soy tecnologia #1'
-    },
-    {
-        titulo: 'Soy titulo #1',
-        tecnologia: 'soy tecnologia #1'
-    }
-]
 
-const typeDefs = gql`
-    type Curso {
-        titulo: String
-    }
-
-    type Tecnologia {
-        tecnologia: String
-    }
-
-    type Query {
-        obtenerCursos: [Curso]
-        obtenerTecnologia: [Tecnologia]
-    }
-`;
-
-
-const resolvers = {
-    Query: {
-        obtenerCursos: () => curso,
-        obtenerTecnologia: () => curso
-    }
-}
-
+conectarDB()
 
 const server = new ApolloServer({
     typeDefs,
@@ -44,4 +22,4 @@ const server = new ApolloServer({
 
 server.listen().then( ({url}) => {
     console.log(`Server listo en la url ${url}`)
-} )
+})
