@@ -1,8 +1,3 @@
-// const { ApolloServer, gql } = require('apollo-server');
-
-// const conectarDB = require('./config/db');
-// const typeDefs = require('./schema');
-// const resolvers = require('./resolvers'); 
 
 import { ApolloServer } from 'apollo-server';
 
@@ -41,6 +36,7 @@ const server = new ApolloServer({
         }
         
     }
+    
 });
 
 

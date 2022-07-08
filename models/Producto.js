@@ -21,6 +21,8 @@ const ProductosSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
+
+ProductosSchema.index({ nombre: 'text' });
 
 export default mongoose.model('Producto', ProductosSchema);
